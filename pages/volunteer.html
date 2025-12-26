@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التطوع - منظمة بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* أنماط خاصة بصفحة التطوع */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .volunteer-info {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .volunteer-form-section {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .volunteer-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-left: 10px;
+        }
+        
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--dark-color);
+        }
+        
+        .volunteer-types {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .type-card {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .type-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            background: var(--primary-color);
+        }
+        
+        .type-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .type-card ul li {
+            padding: 0.3rem 0;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        .type-card ul li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .time-required {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .volunteer-form {
+                padding: 2rem;
+            }
+            
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html" class="active">كن متطوعاً</a></li>
+                <li><a href="stories.html">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</li>
+                <li><a href="donate.html" class="btn-donate">تبرع الآن</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- هيرو صفحة التطوع -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>كن بطلًا للحيوانات</h1>
+            <p>ساهم بخبراتك ووقتك لحماية الحيوانات عن بعد</p>
+        </div>
+    </section>
+
+    <!-- معلومات التطوع -->
+    <section class="volunteer-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>مرن في الوقت</h3>
+                    <p>تطوع من 1-10 ساعات أسبوعياً حسب وقتك</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-laptop"></i>
+                    <h3>عن بعد بالكامل</h3>
+                    <p>لا تحتاج لمغادرة منزلك للمشاركة</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>شهادة تطوع</h3>
+                    <p>احصل على شهادة معتمدة بعد 3 أشهر</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>مجتمع داعم</h3>
+                    <p>انضم لمجتمع من المحبين للحيوان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- أنواع التطوع -->
+    <section class="volunteer-types">
+        <div class="container">
+            <h2 class="section-title">مجالات التطوع المتاحة</h2>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3>النشاط الرقمي</h3>
+                    <ul>
+                        <li>إدارة صفحات التواصل الاجتماعي</li>
+                        <li>المشاركة في الحملات الإلكترونية</li>
+                        <li>التوعية عبر المنصات الرقمية</li>
+                    </ul>
+                    <span class="time-required">⏱️ 2-5 ساعات أسبوعياً</span>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>البحث والمعلومات</h3>
+                    <ul>
+                        <li>جمع بيانات عن انتهاكات حقوق الحيوان</li>
+                        <li>إعداد تقارير بحثية</li>
+                        <li>ترجمة الدراسات العالمية</li>
+                    </ul>
+                    <span class="time-required">⏱️ 3-6 ساعات أسبوعياً</span>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>صناعة المحتوى</h3>
+                    <ul>
+                        <li>كتابة مقالات توعوية</li>
+                        <li>تصميم إنفوجرافيك</li>
+                        <li>إنتاج مقاطع فيديو قصيرة</li>
+                    </ul>
+                    <span class="time-required">⏱️ 4-8 ساعات أسبوعياً</span>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>الدعم القانوني</h3>
+                    <ul>
+                        <li>مراجعة القوانين المحلية</li>
+                        <li>إعداد عرائض الضغط</li>
+                        <li>مشورة قانونية افتراضية</li>
+                    </ul>
+                    <span class="time-required">⏱️ 5-10 ساعات أسبوعياً</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج التطوع -->
+    <section class="volunteer-form-section">
+        <div class="container">
+            <h2 class="section-title">سجل كمتطوع الآن</h2>
+            
+            <form class="volunteer-form" id="volunteerForm">
+                <!-- المعلومات الشخصية -->
+                <div class="form-group">
+                    <label for="fullName">الاسم الكامل *</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="أدخل اسمك الثلاثي">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="05XXXXXXXX">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">الدولة *</label>
+                        <select id="country" name="country" required>
+                            <option value="">اختر دولتك</option>
+                            <option value="saudi">المملكة العربية السعودية</option>
+                            <option value="uae">الإمارات العربية المتحدة</option>
+                            <option value="egypt">جمهورية مصر العربية</option>
+                            <option value="kuwait">الكويت</option>
+                            <option value="other">دولة أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">العمر *</label>
+                        <input type="number" id="age" name="age" min="16" max="80" required placeholder="16+">
+                    </div>
+                </div>
+                
+                <!-- معلومات التطوع -->
+                <div class="form-group">
+                    <label>مجالات التطوع المفضلة (يمكنك اختيار أكثر من مجال) *</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="volunteerAreas" value="digital"> النشاط الرقمي</label>
+                        <label><input type="checkbox" name="volunteerAreas" value="research"> البحث والمعلومات</label>
+                        <label><input type="checkbox" name="volunteerAreas" value="content"> صناعة المحتوى</label>
+                        <label><input type="checkbox" name="volunteerAreas" value="translation"> الترجمة</label>
+                        <label><input type="checkbox" name="volunteerAreas" value="legal"> الدعم القانوني</label>
+                        <label><input type="checkbox" name="volunteerAreas" value="fundraising"> جمع التبرعات</label>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hoursPerWeek">عدد الساعات الأسبوعية *</label>
+                        <select id="hoursPerWeek" name="hoursPerWeek" required>
+                            <option value="">اختر عدد الساعات</option>
+                            <option value="1-3">1-3 ساعات</option>
+                            <option value="3-5">3-5 ساعات</option>
+                            <option value="5-8">5-8 ساعات</option>
+                            <option value="8+">أكثر من 8 ساعات</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">هل لديك خبرة سابقة في العمل التطوعي؟ *</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">اختر الإجابة</option>
+                            <option value="yes">نعم</option>
+                            <option value="no">لا</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- دوافع المشاركة -->
+                <div class="form-group">
+                    <label for="motivation">لماذا تريد الانضمام إلى "بدون ألم"؟ *</label>
+                    <textarea id="motivation" name="motivation" rows="4" required placeholder="شاركنا دوافعك للانضمام إلينا..."></textarea>
+                </div>
+                
+                <!-- الموافقة -->
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="agreement" required>
+                        أوافق على شروط التطوع وسياسة الخصوصية. وأؤكد أن جميع المعلومات المقدمة صحيحة.
+                    </label>
+                </div>
+                
+                <!-- زر الإرسال -->
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> إرسال طلب التطوع
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // جافاسكريبت خاص بصفحة التطوع
+        document.addEventListener('DOMContentLoaded', function() {
+            // شريط التنقل المتنقل
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // نموذج التطوع
+            const volunteerForm = document.getElementById('volunteerForm');
+            
+            if (volunteerForm) {
+                volunteerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // جمع البيانات
+                    const formData = new FormData(this);
+                    const data = {};
+                    
+                    formData.forEach((value, key) => {
+                        if (data[key]) {
+                            if (Array.isArray(data[key])) {
+                                data[key].push(value);
+                            } else {
+                                data[key] = [data[key], value];
+                            }
+                        } else {
+                            data[key] = value;
+                        }
+                    });
+                    
+                    // هنا يمكنك إرسال البيانات للخادم
+                    console.log('بيانات المتطوع:', data);
+                    
+                    // عرض رسالة النجاح
+                    alert('شكراً لك! تم استلام طلب التطوع بنجاح. سنتواصل معك خلال 48 ساعة.');
+                    
+                    // إعادة تعيين النموذج
+                    this.reset();
+                });
+            }
+            
+            // التمرير السلس للروابط الداخلية
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

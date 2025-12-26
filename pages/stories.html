@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قصص النجاح - بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .stories-grid {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .stories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .story-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-content {
+            padding: 1.5rem;
+        }
+        
+        .story-category {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .story-content h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .story-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        
+        .featured-story {
+            background: var(--light-color);
+            padding: 80px 0;
+        }
+        
+        .featured-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .featured-content h2 {
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .featured-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html">كن متطوعاً</a></li>
+                <li><a href="stories.html" class="active">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- هيرو الصفحة -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>قصص النجاح</h1>
+            <p>قصص حقيقية عن تأثير عملنا</p>
+        </div>
+    </section>
+
+    <!-- القصص -->
+    <section class="stories-grid">
+        <div class="container">
+            <div class="stories-container">
+                <!-- قصة 1 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="قصة">
+                    </div>
+                    <div class="story-content">
+                        <span class="story-category">إنقاذ</span>
+                        <h3>إنقاذ كلب من الشارع</h3>
+                        <p>تم إنقاذ كلب كان يعاني في الشارع وتوفير الرعاية الطبية له، وتم العثور على أسرة تتبناه.</p>
+                        <div class="story-meta">
+                            <span>يناير 2023</span>
+                            <span><i class="fas fa-heart"></i> 150</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- قصة 2 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="قصة">
+                    </div>
+                    <div class="story-content">
+                        <span class="story-category">علاج</span>
+                        <h3>علاج قطة مصابة</h3>
+                        <p>عثر متطوع على قطة مصابة وقمنا بتغطية تكاليف علاجها حتى تعافت تماماً.</p>
+                        <div class="story-meta">
+                            <span>مارس 2023</span>
+                            <span><i class="fas fa-heart"></i> 200</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- قصة 3 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="قصة">
+                    </div>
+                    <div class="story-content">
+                        <span class="story-category">توعية</span>
+                        <h3>حملة توعية ناجحة</h3>
+                        <p>حملة رقمية وصلت لأكثر من 50,000 شخص حول أهمية الرفق بالحيوان.</p>
+                        <div class="story-meta">
+                            <span>مايو 2023</span>
+                            <span><i class="fas fa-heart"></i> 300</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- القصة الرئيسية -->
+    <section class="featured-story">
+        <div class="container">
+            <div class="featured-container">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6d03bdeacba8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="قصة مميزة">
+                </div>
+                <div class="featured-content">
+                    <h2>قصة لولو</h2>
+                    <p>لولو كانت قطة شوارع تعاني من إصابة خطيرة. قام متطوع بالإبلاغ عن حالتها، وقمنا بنقلها للعلاج الفوري. بعد شهرين من الرعاية، تعافت لولو تماماً وتم تبنيها من قبل أسرة محبة.</p>
+                    <p>هذه القصة تذكرنا بأن كل جهد صغير يمكن أن يحدث فرقاً كبيراً في حياة حيوان.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="#" class="btn-primary">اقرأ المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شهادات -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">كلمات من متطوعينا</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "كانت تجربة رائعة أن أكون جزءاً من إنقاذ حيوان. أشعر بأنني أحدث فرقاً حقيقياً."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="متطوعة">
+                        <div>
+                            <h4>نورة العتيبي</h4>
+                            <p>متطوعة منذ 6 أشهر</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "العمل مع 'بدون ألم' علمني كيفية استخدام التكنولوجيا لخدمة قضية أؤمن بها."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="متطوع">
+                        <div>
+                            <h4>أحمد السديري</h4>
+                            <p>متطوع منذ سنة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "أفضل ما في المنظمة أنها تتيح لي المساعدة من منزلي، وهذا يناسب ظروفي بشكل كبير."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="متطوعة">
+                        <div>
+                            <h4>سارة القحطاني</h4>
+                            <p>متطوعة منذ 8 أشهر</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية تعمل على حماية حقوق الحيوان</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم". جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // شريط التنقل
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // التمرير السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // تفاعل مع القصص
+            document.querySelectorAll('.story-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const title = this.querySelector('h3').textContent;
+                    alert(`ستفتح قريباً صفحة تفاصيل قصة: ${title}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

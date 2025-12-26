@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التبرع - منظمة بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* أنماط خاصة بصفحة التبرع */
+        .donate-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .donate-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .donation-options {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .amount-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .amount-option {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .amount-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .amount-option.selected {
+            border-color: var(--primary-color);
+            background: var(--light-color);
+        }
+        
+        .amount-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        .custom-amount .amount-circle {
+            background: var(--secondary-color);
+        }
+        
+        .donation-form-section {
+            padding: 80px 0;
+            background: var(--gray);
+        }
+        
+        .donation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .payment-methods {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .payment-method input[type="radio"] {
+            margin-left: 1rem;
+        }
+        
+        .payment-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+        
+        .payment-content i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .card-details {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .why-donate {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+        
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .reason-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .reason-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .transparency {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .allocation-chart {
+            max-width: 500px;
+            margin: 3rem auto;
+        }
+        
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .amount-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .donation-form {
+                padding: 2rem;
+            }
+            
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html">كن متطوعاً</a></li>
+                <li><a href="stories.html">قصص النجاح</a></li>
+                <li><a href="donate.html" class="active">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- هيرو التبرع -->
+    <section class="donate-hero">
+        <div class="container">
+            <h1>تبرعك ينقذ حياة</h1>
+            <p>كل ريال تقوم بتبرعه يساهم في حماية الحيوانات وإنهاء معاناتها</p>
+        </div>
+    </section>
+
+    <!-- لماذا التبرع؟ -->
+    <section class="why-donate">
+        <div class="container">
+            <h2 class="section-title">لماذا تبرع لـ "بدون ألم"؟</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>تأثير مباشر</h3>
+                    <p>100% من تبرعاتك تذهب مباشرة لبرامج حماية الحيوان</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>شفافية كاملة</h3>
+                    <p>ننشر تقارير مفصلة عن كل ريال تنفقه</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>تأثير عالمي</h3>
+                    <p>تبرعك يؤثر في حماية الحيوانات في 45 دولة</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>معتمد وموثوق</h3>
+                    <p>منظمة مسجلة ومعتمدة من الجهات الرقابية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- خيارات التبرع -->
+    <section class="donation-options">
+        <div class="container">
+            <h2 class="section-title">اختر مبلغ تبرعك</h2>
+            
+            <div class="amount-options">
+                <div class="amount-option" data-amount="50">
+                    <div class="amount-circle">50</div>
+                    <span>ريال</span>
+                    <p>تكلفة علاج حيوان مصاب</p>
+                </div>
+                
+                <div class="amount-option" data-amount="100">
+                    <div class="amount-circle">100</div>
+                    <span>ريال</span>
+                    <p>تكلفة إنقاذ حيوان من الخطر</p>
+                </div>
+                
+                <div class="amount-option" data-amount="200">
+                    <div class="amount-circle">200</div>
+                    <span>ريال</span>
+                    <p>تكلفة تدريب متطوع جديد</p>
+                </div>
+                
+                <div class="amount-option" data-amount="500">
+                    <div class="amount-circle">500</div>
+                    <span>ريال</span>
+                    <p>تكلفة حملة توعية كاملة</p>
+                </div>
+                
+                <div class="amount-option custom-amount">
+                    <div class="amount-circle">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <span>مبلغ آخر</span>
+                    <p>أدخل المبلغ الذي ترغب به</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج التبرع -->
+    <section class="donation-form-section">
+        <div class="container">
+            <h2 class="section-title">اكمل بيانات التبرع</h2>
+            
+            <form class="donation-form" id="donationForm">
+                <!-- معلومات المتبرع -->
+                <div class="form-group">
+                    <label for="donor-name">الاسم الكامل *</label>
+                    <input type="text" id="donor-name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="donor-email">البريد الإلكتروني *</label>
+                        <input type="email" id="donor-email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="donor-phone">رقم الهاتف</label>
+                        <input type="tel" id="donor-phone">
+                    </div>
+                </div>
+                
+                <!-- طريقة الدفع -->
+                <div class="form-group">
+                    <label>طريقة الدفع *</label>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="card" checked>
+                            <div class="payment-content">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h4>البطاقة الإئتمانية</h4>
+                                    <p>فيزا، ماستركارد، أمريكان إكسبريس</p>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="mada">
+                            <div class="payment-content">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h4>مدى</h4>
+                                    <p>للعملاء في المملكة العربية السعودية</p>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="apple-pay">
+                            <div class="payment-content">
+                                <i class="fab fa-apple"></i>
+                                <div>
+                                    <h4>Apple Pay</h4>
+                                    <p>للدفع السريع عبر أجهزة آبل</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- تفاصيل البطاقة -->
+                <div class="card-details">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-number">رقم البطاقة *</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">تاريخ الانتهاء *</label>
+                            <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-cvv">رمز الأمان (CVV) *</label>
+                            <input type="text" id="card-cvv" placeholder="123" maxlength="4">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-name">اسم حامل البطاقة *</label>
+                        <input type="text" id="card-name" placeholder="كما هو مدون على البطاقة">
+                    </div>
+                </div>
+                
+                <!-- الموافقة -->
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" required>
+                        أوافق على شروط الاستخدام وسياسة الخصوصية
+                    </label>
+                </div>
+                
+                <!-- زر الإرسال -->
+                <button type="submit" class="btn-submit" style="width: auto; padding: 1rem 3rem;">
+                    <i class="fas fa-lock"></i> تبرع الآن
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- الشفافية -->
+    <section class="transparency">
+        <div class="container">
+            <h2 class="section-title">أين تذهب تبرعاتك؟</h2>
+            <div class="allocation-chart">
+                <!-- هنا يمكن إضافة رسم بياني -->
+                <div style="text-align: center; padding: 3rem; background: var(--light-color); border-radius: 15px;">
+                    <h3>توزيع التبرعات</h3>
+                    <p>80% برامج مباشرة</p>
+                    <p>15% تطوير وتقنية</p>
+                    <p>5% إدارة</p>
+                </div>
+                
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #4CAF50;"></span>
+                        <span>80% برامج مباشرة</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #2196F3;"></span>
+                        <span>15% تطوير وتقنية</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #FF9800;"></span>
+                        <span>5% إدارة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // جافاسكريبت خاص بصفحة التبرع
+        document.addEventListener('DOMContentLoaded', function() {
+            // شريط التنقل المتنقل
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // اختيار مبلغ التبرع
+            const amountOptions = document.querySelectorAll('.amount-option');
+            let selectedAmount = 100;
+            
+            amountOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // إزالة التحديد من جميع الخيارات
+                    amountOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // إضافة التحديد للخيار المحدد
+                    this.classList.add('selected');
+                    
+                    if (!this.classList.contains('custom-amount')) {
+                        selectedAmount = this.getAttribute('data-amount');
+                        console.log('المبلغ المختار:', selectedAmount);
+                    } else {
+                        // طلب إدخال مبلغ مخصص
+                        const customAmount = prompt('أدخل المبلغ الذي ترغب في التبرع به (ريال):');
+                        if (customAmount && !isNaN(customAmount) && customAmount > 0) {
+                            selectedAmount = customAmount;
+                            console.log('المبلغ المخصص:', selectedAmount);
+                        }
+                    }
+                });
+            });
+            
+            // تحديد أول خيار افتراضي
+            if (amountOptions.length > 0) {
+                amountOptions[1].classList.add('selected'); // 100 ريال كاختيار افتراضي
+            }
+            
+            // نموذج التبرع
+            const donationForm = document.getElementById('donationForm');
+            
+            if (donationForm) {
+                donationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // جمع البيانات
+                    const formData = new FormData(this);
+                    const data = {
+                        amount: selectedAmount,
+                        ...Object.fromEntries(formData)
+                    };
+                    
+                    // هنا يمكنك إرسال البيانات للخادم
+                    console.log('بيانات التبرع:', data);
+                    
+                    // عرض رسالة النجاح
+                    alert(`شكراً لك على تبرعك بمبلغ ${selectedAmount} ريال! تم استلام طلبك بنجاح.`);
+                    
+                    // إعادة تعيين النموذج
+                    this.reset();
+                });
+            }
+            
+            // تنسيق رقم البطاقة
+            const cardNumber = document.getElementById('card-number');
+            if (cardNumber) {
+                cardNumber.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(\d{4})/g, '$1 ').trim();
+                    e.target.value = value.substring(0, 19);
+                });
+            }
+            
+            // تنسيق تاريخ الانتهاء
+            const cardExpiry = document.getElementById('card-expiry');
+            if (cardExpiry) {
+                cardExpiry.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value.substring(0, 5);
+                });
+            }
+            
+            // التمرير السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
