@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حملاتنا - بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .campaigns-hero {
+            background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(76, 175, 80, 0.8));
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .campaign-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .campaign-details {
+            margin-top: 3rem;
+        }
+        
+        .campaign-detail-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            display: none;
+        }
+        
+        .campaign-detail-card.active {
+            display: block;
+        }
+        
+        .campaign-header {
+            padding: 2rem;
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .campaign-stats {
+            display: flex;
+            gap: 3rem;
+            padding: 1.5rem 2rem;
+            background: var(--light-color);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .campaign-content {
+            padding: 2rem;
+        }
+        
+        .campaign-goals {
+            background: var(--gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .goal-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .goal-check {
+            color: var(--primary-color);
+        }
+        
+        .join-campaign {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+            width: fit-content;
+        }
+        
+        .upcoming-campaigns {
+            margin-top: 4rem;
+        }
+        
+        .campaign-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .campaign-list-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .campaign-status {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status-upcoming {
+            background: #FFE082;
+            color: #FF6F00;
+        }
+        
+        .status-active {
+            background: #C8E6C9;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html" class="active">حملاتنا</a></li>
+                <li><a href="volunteer.html">كن متطوعاً</a></li>
+                <li><a href="stories.html">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="donate.html" class="btn-donate">تبرع الآن</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="campaigns-hero">
+        <div class="container">
+            <h1>حملاتنا الرقمية</h1>
+            <p class="subtitle">نغير العالم من خلال حملات رقمية مؤثرة</p>
+        </div>
+    </section>
+
+    <!-- التبويبات -->
+    <section class="campaigns" style="padding: 60px 0 30px;">
+        <div class="container">
+            <div class="campaign-tabs">
+                <button class="tab-btn active" data-campaign="ban-cruelty">#مقاطعة_القسوة</button>
+                <button class="tab-btn" data-campaign="digital-adoption">التبني الرقمي</button>
+                <button class="tab-btn" data-campaign="legal-monitoring">المراقبة القانونية</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- تفاصيل الحملات -->
+    <section class="campaign-details">
+        <div class="container">
+            <!-- حملة مقاطعة القسوة -->
+            <div class="campaign-detail-card active" id="ban-cruelty">
+                <div class="campaign-header">
+                    <h2>حملة #مقاطعة_القسوة</h2>
+                    <p>مكافحة منتجات الاختبار على الحيوانات</p>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <span class="number">125,846</span>
+                        <span class="label">توقيع</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">47</span>
+                        <span class="label">شركة مستهدفة</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">89%</span>
+                        <span class="label">معدل النجاح</span>
+                    </div>
+                </div>
+                
+                <div class="campaign-content">
+                    <h3>عن الحملة</h3>
+                    <p>حملتنا لمقاطعة المنتجات التي تُختبر على الحيوانات وتوعية المجتمع بضرورة اختيار البدائل الأخلاقية.</p>
+                    
+                    <h3 style="margin-top: 2rem;">أهداف الحملة</h3>
+                    <div class="campaign-goals">
+                        <div class="goal-item">
+                            <i class="fas fa-check-circle goal-check"></i>
+                            <span>جمع 200,000 توقيع للمطالبة بحظر الاختبار على الحيوانات</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-check-circle goal-check"></i>
+                            <span>إقناع 50 شركة بالتحول إلى بدائل غير حيوانية</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-check-circle goal-check"></i>
+                            <span>توعية مليون شخص بأهمية المنتجات الخالية من القسوة</span>
+                        </div>
+                    </div>
+                    
+                    <h3>كيف تشارك؟</h3>
+                    <ul style="padding-right: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;">قم بتوقيع العريضة الإلكترونية</li>
+                        <li style="margin-bottom: 0.5rem;">شارك الحملة على وسائل التواصل الاجتماعي</li>
+                        <li style="margin-bottom: 0.5rem;">استخدم قائمة المنتجات البديلة التي وفرناها</li>
+                        <li style="margin-bottom: 0.5rem;">بلغ عن منتجات لا تلتزم بالمعايير الأخلاقية</li>
+                    </ul>
+                    
+                    <button class="join-campaign">انضم إلى الحملة الآن</button>
+                </div>
+            </div>
+            
+            <!-- حملة التبني الرقمي -->
+            <div class="campaign-detail-card" id="digital-adoption">
+                <div class="campaign-header">
+                    <h2>حملة التبني الرقمي</h2>
+                    <p>ربط الحيوانات المحتاجة بأسر حاضنة</p>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <span class="number">2,847</span>
+                        <span class="label">حيوان تم تبنيه</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">1,593</span>
+                        <span class="label">أسرة حاضنة</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">94%</span>
+                        <span class="label">معدل النجاح</span>
+                    </div>
+                </div>
+                
+                <div class="campaign-content">
+                    <!-- محتوى مماثل للحملة الأولى -->
+                    <p>حملة رقمية لربط الحيوانات المحتاجة مع أسر راعية من خلال منصتنا الرقمية.</p>
+                    <button class="join-campaign">اعرض بيتك للتبني الرقمي</button>
+                </div>
+            </div>
+            
+            <!-- حملة المراقبة القانونية -->
+            <div class="campaign-detail-card" id="legal-monitoring">
+                <div class="campaign-header">
+                    <h2>حملة المراقبة القانونية</h2>
+                    <p>مراقبة انتهاكات حقوق الحيوان</p>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <span class="number">3,456</span>
+                        <span class="label">بلاغ تم معالجته</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">217</span>
+                        <span class="label">قضية قانونية</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">78%</span>
+                        <span class="label">معدل النجاح</span>
+                    </div>
+                </div>
+                
+                <div class="campaign-content">
+                    <!-- محتوى مماثل للحملة الأولى -->
+                    <p>منصة رقمية للإبلاغ عن حالات الإساءة للحيوانات ومتابعتها قانونياً.</p>
+                    <button class="join-campaign">بلغ عن حالة إساءة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الحملات القادمة -->
+    <section class="upcoming-campaigns">
+        <div class="container">
+            <h2 class="section-title">حملات قادمة</h2>
+            <div class="campaign-list">
+                <div class="campaign-list-item">
+                    <span class="campaign-status status-upcoming">قريباً</span>
+                    <h3>حملة #حدائق_بدون_أقفاص</h3>
+                    <p>مطالبة بتطوير حدائق الحيوان لتكون أكثر إنسانية</p>
+                    <p style="color: #666; margin-top: 1rem;"><i class="far fa-calendar"></i> تبدأ: يناير 2024</p>
+                </div>
+                
+                <div class="campaign-list-item">
+                    <span class="campaign-status status-active">نشطة</span>
+                    <h3>حملة #غذاء_بلا_قسوة</h3>
+                    <p>التوعية بالزراعة المستدامة والمنتجات النباتية</p>
+                    <p style="color: #666; margin-top: 1rem;"><i class="far fa-calendar"></i> حتى: ديسمبر 2023</p>
+                </div>
+                
+                <div class="campaign-list-item">
+                    <span class="campaign-status status-upcoming">قريباً</span>
+                    <h3>حملة #تعليم_الرحمة</h3>
+                    <p>إدخال مناهج التربية الرحيمة في المدارس</p>
+                    <p style="color: #666; margin-top: 1rem;"><i class="far fa-calendar"></i> تبدأ: فبراير 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <section class="call-to-action">
+        <div class="container">
+            <h2>ابدأ حملتك الخاصة</h2>
+            <p>لديك فكرة لحملة لحماية الحيوان؟ نحن ندعمك</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">اقترح حملة</a>
+                <a href="volunteer.html" class="btn-secondary">كن ناشطاً رقمياً</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // التحكم في التبويبات
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const campaignCards = document.querySelectorAll('.campaign-detail-card');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // إزالة النشاط من جميع الأزرار
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // إضافة النشاط للزر الحالي
+                    this.classList.add('active');
+                    
+                    // إخفاء جميع البطاقات
+                    campaignCards.forEach(card => card.classList.remove('active'));
+                    
+                    // إظهار البطاقة المحددة
+                    const campaignId = this.getAttribute('data-campaign');
+                    const targetCard = document.getElementById(campaignId);
+                    if (targetCard) {
+                        targetCard.classList.add('active');
+                    }
+                });
+            });
+            
+            // زر الانضمام للحملة
+            const joinButtons = document.querySelectorAll('.join-campaign');
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const campaignName = this.closest('.campaign-detail-card').querySelector('h2').textContent;
+                    alert(`شكراً لرغبتك في الانضمام إلى حملة "${campaignName}"!\n\nسيتم توجيهك إلى نموذج التسجيل.`);
+                    // يمكن توجيه المستخدم إلى صفحة التطوع
+                    // window.location.href = 'volunteer.html';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

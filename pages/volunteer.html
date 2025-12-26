@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كن متطوعاً - بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .volunteer-hero {
+            background: linear-gradient(rgba(255, 152, 0, 0.9), rgba(255, 152, 0, 0.8));
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .volunteer-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .volunteer-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .volunteer-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .volunteer-form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-radius: 10px;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .volunteer-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .story-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html" class="active">كن متطوعاً</a></li>
+                <li><a href="stories.html">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="donate.html" class="btn-donate">تبرع الآن</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="volunteer-hero">
+        <div class="container">
+            <h1>كن صوتاً لمن لا صوت له</h1>
+            <p class="subtitle">انضم إلى جيشنا الرقمي من المتطوعين</p>
+        </div>
+    </section>
+
+    <!-- أنواع التطوع -->
+    <section class="campaigns">
+        <div class="container">
+            <h2 class="section-title">كيف يمكنك المساعدة؟</h2>
+            <div class="volunteer-types">
+                <div class="volunteer-card">
+                    <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>متطوع رقمي</h3>
+                    <p>شارك في الحملات الرقمية من منزلك</p>
+                </div>
+                
+                <div class="volunteer-card">
+                    <i class="fas fa-gavel" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>ناشط قانوني</h3>
+                    <p>ساعد في متابعة القضايا القانونية</p>
+                </div>
+                
+                <div class="volunteer-card">
+                    <i class="fas fa-chalkboard-teacher" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>مدرب رحمة</h3>
+                    <p>قدم ورش عمل عن حقوق الحيوان</p>
+                </div>
+                
+                <div class="volunteer-card">
+                    <i class="fas fa-language" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>مترجم متطوع</h3>
+                    <p>ساعد في ترجمة المحتوى</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوائد التطوع -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">فوائد الانضمام إلينا</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-certificate" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>شهادة تطوع معتمدة</h4>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-graduation-cap" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>تدريب مجاني متخصص</h4>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-globe" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>شبكة عالمية من النشطاء</h4>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-trophy" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h4>تكريم المتطوعين المتميزين</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج التطوع -->
+    <section class="mission" style="padding: 80px 0; background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">سجل كمتطوع</h2>
+            <div class="volunteer-form-container">
+                <form id="volunteerForm">
+                    <div class="form-group">
+                        <label for="fullName">الاسم الكامل *</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">الدولة</label>
+                        <select id="country" class="form-control">
+                            <option value="">اختر الدولة</option>
+                            <option value="sa">السعودية</option>
+                            <option value="ae">الإمارات</option>
+                            <option value="eg">مصر</option>
+                            <option value="other">دولة أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>مجالات التطوع التي تهمك</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="digital">
+                                <span>التطوع الرقمي</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="legal">
+                                <span>النشاط القانوني</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="education">
+                                <span>التوعية والتعليم</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="translation">
+                                <span>الترجمة</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="design">
+                                <span>التصميم والمحتوى</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">الخبرة السابقة (اختياري)</label>
+                        <textarea id="experience" class="form-control" rows="3" placeholder="اكتب عن أي خبرة سابقة في العمل التطوعي أو مجال حقوق الحيوان..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motivation">لماذا تريد التطوع معنا؟ *</label>
+                        <textarea id="motivation" class="form-control" rows="4" required placeholder="شاركنا دافعك للانضمام إلينا..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hours">عدد الساعات المتاحة أسبوعياً *</label>
+                        <select id="hours" class="form-control" required>
+                            <option value="">اختر عدد الساعات</option>
+                            <option value="1-3">1-3 ساعات</option>
+                            <option value="4-7">4-7 ساعات</option>
+                            <option value="8-10">8-10 ساعات</option>
+                            <option value="10+">أكثر من 10 ساعات</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> إرسال طلب التطوع
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="campaigns">
+        <div class="container">
+            <h2 class="section-title">أسئلة شائعة عن التطوع</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل يمكنني التطوع من المنزل؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، معظم أنشطتنا رقمية ويمكنك المشاركة من أي مكان في العالم.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل هناك حد أدنى لعدد ساعات التطوع؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        لا، يمكنك التطوع حسب وقتك المتاح، حتى لو كانت ساعة واحدة أسبوعياً.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل أحتاج لخبرة سابقة؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        لا، نقدم تدريباً مجانياً لجميع المتطوعين الجدد.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل يمكن للطلاب التطوع؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، ونقدم شهادات تطوع معتمدة للطلاب.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قصص المتطوعين -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">تجارب متطوعينا</h2>
+            <div class="volunteer-stories">
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="../assets/images/volunteer1.jpg" alt="نورة" class="story-avatar">
+                        <div>
+                            <h3>نورة السالم</h3>
+                            <p style="color: #666; font-size: 0.9rem;">متطوعة رقمية منذ 2021</p>
+                        </div>
+                    </div>
+                    <p>"انضممت كمتطوعة رقمية وأصبحت الآن مدربة للمتطوعين الجدد. شعور رائع أن أكون جزءاً من التغيير!"</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="../assets/images/volunteer2.jpg" alt="خالد" class="story-avatar">
+                        <div>
+                            <h3>خالد الفهد</h3>
+                            <p style="color: #666; font-size: 0.9rem;">ناشط قانوني منذ 2020</p>
+                        </div>
+                    </div>
+                    <p>"بفضل منصة المراقبة القانونية، استطعنا إغلاق 3 مزارع كانت تعامل الحيوانات بقسوة."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <section class="call-to-action">
+        <div class="container">
+            <h2>ابدأ رحلتك التطوعية اليوم</h2>
+            <p>لا تحتاج إلى خبرة، فقط الحماس والرغبة في التغيير</p>
+            <div class="cta-buttons">
+                <a href="#volunteerForm" class="btn-primary">سجل الآن</a>
+                <a href="stories.html" class="btn-secondary">اقرأ قصص النجاح</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // الأسئلة الشائعة
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // نموذج التطوع
+            const volunteerForm = document.getElementById('volunteerForm');
+            if (volunteerForm) {
+                volunteerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // التحقق من صحة النموذج
+                    const isValid = validateForm();
+                    if (isValid) {
+                        alert('شكراً لتسجيلك كمتطوع! سنتواصل معك خلال 48 ساعة.\n\nستتلقى رسالة تأكيد على بريدك الإلكتروني.');
+                        volunteerForm.reset();
+                        
+                        // يمكن إضافة كود إرسال النموذج هنا
+                        // const formData = new FormData(volunteerForm);
+                        // fetch('submit.php', { method: 'POST', body: formData })
+                    }
+                });
+            }
+            
+            function validateForm() {
+                let isValid = true;
+                const requiredFields = volunteerForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#f44336';
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                return isValid;
+            }
+        });
+    </script>
+</body>
+</html>

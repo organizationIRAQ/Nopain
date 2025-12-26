@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن المنظمة - بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .about-hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.8)), url('../assets/images/about-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-year {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-left: 2rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 5px solid var(--light-color);
+        }
+        
+        .partners {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .partner-logo {
+            width: 150px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل (نفس الرئيسية) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html" class="active">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html">كن متطوعاً</a></li>
+                <li><a href="stories.html">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="donate.html" class="btn-donate">تبرع الآن</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>عن منظمة "بدون ألم"</h1>
+            <p class="subtitle">منذ 2015، نعمل كمنظمة رقمية لحماية حقوق الحيوان</p>
+        </div>
+    </section>
+
+    <!-- القيم -->
+    <section class="mission" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">قيمنا الأساسية</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-heart" style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <h3>الرحمة</h3>
+                    <p>نؤمن بأن الرحمة هي أساس التعامل مع جميع الكائنات الحية</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-shield-alt" style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <h3>الحماية</h3>
+                    <p>نسعى لحماية الحيوانات من جميع أشكال المعاناة</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-handshake" style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <h3>التعاون</h3>
+                    <p>نعمل مع منظمات محلية ودولية لتحقيق أهدافنا</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-bullhorn" style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <h3>التوعية</h3>
+                    <p>ننشر الوعي بحقوق الحيوان في المجتمع</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تاريخنا -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">رحلة تأسيسنا</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2015</div>
+                    <div>
+                        <h3>التأسيس</h3>
+                        <p>تأسست المنظمة كمجموعة متطوعين على وسائل التواصل الاجتماعي</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div>
+                        <h3>التسجيل الرسمي</h3>
+                        <p>تم تسجيل المنظمة رسمياً كمنظمة غير ربحية</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div>
+                        <h3>الانتقال الرقمي</h3>
+                        <p>تحولنا إلى منظمة رقمية بالكامل للوصول إلى جميع أنحاء العالم</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div>
+                        <h3>التوسع العالمي</h3>
+                        <p>وصل عدد متطوعينا إلى أكثر من 5000 متطوع في 30 دولة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فريق العمل -->
+    <section class="campaigns">
+        <div class="container">
+            <h2 class="section-title">فريق القيادة</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="../assets/images/team1.jpg" alt="المدير التنفيذي" class="member-img">
+                    <h3>سارة أحمد</h3>
+                    <p>المدير التنفيذي والمؤسس</p>
+                    <p style="color: #666; font-size: 0.9rem;">ناشطة في حقوق الحيوان منذ 15 عاماً</p>
+                </div>
+                <div class="team-member">
+                    <img src="../assets/images/team2.jpg" alt="مدير العمليات" class="member-img">
+                    <h3>محمد الخالد</h3>
+                    <p>مدير العمليات</p>
+                    <p style="color: #666; font-size: 0.9rem;">متخصص في إدارة المنظمات غير الربحية</p>
+                </div>
+                <div class="team-member">
+                    <img src="../assets/images/team3.jpg" alt="مدير التطوع" class="member-img">
+                    <h3>فاطمة السلطان</h3>
+                    <p>مديرة التطوع والتدريب</p>
+                    <p style="color: #666; font-size: 0.9rem;">خبيرة في إدارة المتطوعين الرقميين</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شركاؤنا -->
+    <section class="mission" style="background-color: var(--light-color); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">شركاؤنا</h2>
+            <div class="partners">
+                <img src="../assets/images/partner1.png" alt="شريك" class="partner-logo">
+                <img src="../assets/images/partner2.png" alt="شريك" class="partner-logo">
+                <img src="../assets/images/partner3.png" alt="شريك" class="partner-logo">
+                <img src="../assets/images/partner4.png" alt="شريك" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <section class="call-to-action">
+        <div class="container">
+            <h2>انضم إلى رحلتنا</h2>
+            <p>ساعدنا في جعل العالم مكاناً أفضل للحيوانات</p>
+            <div class="cta-buttons">
+                <a href="volunteer.html" class="btn-primary">كن متطوعاً</a>
+                <a href="donate.html" class="btn-secondary">ادعمنا مادياً</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر (نفس الرئيسية) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

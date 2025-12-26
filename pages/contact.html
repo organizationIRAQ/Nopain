@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا - بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-hero {
+            background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(76, 175, 80, 0.8));
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-title {
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .emergency-contact {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+        }
+        
+        .emergency-contact .info-icon {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .method-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-radius: 10px;
+        }
+        
+        .social-contact {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .social-icons-large {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon-large {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon-large:hover {
+            transform: translateY(-5px);
+        }
+        
+        .map-container {
+            margin: 3rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .working-hours {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html">كن متطوعاً</a></li>
+                <li><a href="stories.html">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html" class="active">تواصل معنا</a></li>
+                <li><a href="donate.html" class="btn-donate">تبرع الآن</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>تواصل معنا</h1>
+            <p class="subtitle">نحن هنا للإجابة على جميع استفساراتك</p>
+        </div>
+    </section>
+
+    <!-- معلومات الاتصال -->
+    <section class="campaigns">
+        <div class="container">
+            <div class="contact-container">
+                <!-- نموذج الاتصال -->
+                <div class="contact-form">
+                    <h2 class="form-title">أرسل رسالة</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">الاسم الكامل *</label>
+                            <input type="text" id="contactName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">البريد الإلكتروني *</label>
+                            <input type="email" id="contactEmail" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPhone">رقم الهاتف</label>
+                            <input type="tel" id="contactPhone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">الموضوع *</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">اختر موضوع الرسالة</option>
+                                <option value="volunteer">التطوع والانضمام</option>
+                                <option value="donation">التبرعات والدعم</option>
+                                <option value="report">الإبلاغ عن حالة إساءة</option>
+                                <option value="partnership">الشراكة والتعاون</option>
+                                <option value="media">الاستفسارات الإعلامية</option>
+                                <option value="other">استفسار آخر</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة *</label>
+                            <textarea id="message" class="form-control" rows="6" required placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label class="checkbox-item">
+                                <input type="checkbox" required>
+                                <span>أوافق على سياسة الخصوصية وشروط الاستخدام</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" style="background: var(--primary-color);">
+                            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- معلومات الاتصال -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-header">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>البريد الإلكتروني</h3>
+                        </div>
+                        <p><strong>للعامة:</strong> info@bedon-alam.org</p>
+                        <p><strong>للتطوع:</strong> volunteer@bedon-alam.org</p>
+                        <p><strong>للإعلام:</strong> media@bedon-alam.org</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-header">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>الهاتف</h3>
+                        </div>
+                        <p><strong>الدعم الفني:</strong> +966 12 345 6789</p>
+                        <p><strong>الاستفسارات العامة:</strong> +966 12 345 6790</p>
+                        <p><strong>الفاكس:</strong> +966 12 345 6791</p>
+                    </div>
+                    
+                    <div class="info-card emergency-contact">
+                        <div class="info-header">
+                            <div class="info-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>الاتصال الطارئ</h3>
+                        </div>
+                        <p>لحالات الإساءة الفورية للحيوانات</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;">+966 55 123 4567</p>
+                        <p style="font-size: 0.9rem;">متوفر 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- طرق التواصل الأخرى -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">طرق أخرى للتواصل</h2>
+            <div class="contact-methods">
+                <div class="method-item">
+                    <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h4>واتساب</h4>
+                    <p>+966 55 123 4567</p>
+                    <p style="font-size: 0.9rem; color: #666;">للرسائل النصية فقط</p>
+                </div>
+                
+                <div class="method-item">
+                    <i class="fas fa-comment-alt" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h4>الدردشة المباشرة</h4>
+                    <p>عبر الموقع</p>
+                    <p style="font-size: 0.9rem; color: #666;">من 8 صباحاً إلى 8 مساءً</p>
+                </div>
+                
+                <div class="method-item">
+                    <i class="fas fa-video" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h4>مقابلات افتراضية</h4>
+                    <p>حجز موعد</p>
+                    <p style="font-size: 0.9rem; color: #666;">للاستفسارات المطولة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ساعات العمل -->
+    <section class="campaigns">
+        <div class="container">
+            <div class="working-hours">
+                <h2 class="section-title" style="text-align: right;">ساعات العمل</h2>
+                <div class="hours-grid">
+                    <div class="hour-item">
+                        <span>الأحد - الأربعاء</span>
+                        <span style="font-weight: 600;">8:00 ص - 6:00 م</span>
+                    </div>
+                    <div class="hour-item">
+                        <span>الخميس</span>
+                        <span style="font-weight: 600;">8:00 ص - 4:00 م</span>
+                    </div>
+                    <div class="hour-item">
+                        <span>الجمعة</span>
+                        <span style="font-weight: 600;">إجازة</span>
+                    </div>
+                    <div class="hour-item">
+                        <span>السبت</span>
+                        <span style="font-weight: 600;">10:00 ص - 2:00 م</span>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; color: #666;">جميع الأوقات بتوقيت السعودية (GMT+3)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- وسائل التواصل الاجتماعي -->
+    <section class="mission" style="padding: 80px 0; background-color: var(--light-color);">
+        <div class="container">
+            <div class="social-contact">
+                <h2 class="section-title">تواصل معنا على وسائل التواصل</h2>
+                <p style="max-width: 600px; margin: 1rem auto;">تابع آخر أخبارنا وحملاتنا على منصات التواصل الاجتماعي</p>
+                
+                <div class="social-icons-large">
+                    <a href="#" class="social-icon-large" style="background: #1DA1F2;">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon-large" style="background: #E1306C;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon-large" style="background: #4267B2;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon-large" style="background: #FF0000;">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon-large" style="background: #0088cc;">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- خريطة (رمزية) -->
+    <section class="container">
+        <div class="map-container">
+            <div style="background: var(--light-color); padding: 3rem; text-align: center; border-radius: 15px;">
+                <i class="fas fa-map-marker-alt" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h3>منظمة رقمية</h3>
+                <p>نحن منظمة رقمية بالكامل، لا نحدد بمكان جغرافي واحد</p>
+                <p style="color: #666; margin-top: 1rem;">متواجدون في كل مكان يوجد فيه اتصال بالإنترنت</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">30+</div>
+                        <div>دولة</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">5,289</div>
+                        <div>متطوع</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">24/7</div>
+                        <div>خدمة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <section class="call-to-action">
+        <div class="container">
+            <h2>لديك فكرة أو مقترح؟</h2>
+            <p>نرحب بكل الأفكار التي تساعد في حماية الحيوانات</p>
+            <div class="cta-buttons">
+                <a href="#contactForm" class="btn-primary">شاركنا أفكارك</a>
+                <a href="volunteer.html" class="btn-secondary">انضم كمتطوع</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // نموذج الاتصال
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // التحقق من صحة النموذج
+                    const isValid = validateContactForm();
+                    if (isValid) {
+                        const subject = document.getElementById('subject').value;
+                        const subjectText = document.getElementById('subject').options[document.getElementById('subject').selectedIndex].text;
+                        
+                        alert(`شكراً لتواصلك معنا! تم استلام رسالتك حول "${subjectText}".\n\nسنرد عليك خلال 24-48 ساعة عمل.`);
+                        contactForm.reset();
+                    }
+                });
+            }
+            
+            function validateContactForm() {
+                let isValid = true;
+                const requiredFields = contactForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#f44336';
+                        
+                        // إظهار رسالة الخطأ
+                        const errorDiv = field.parentNode.querySelector('.error-message');
+                        if (!errorDiv) {
+                            const errorMessage = document.createElement('div');
+                            errorMessage.className = 'error-message';
+                            errorMessage.textContent = 'هذا الحقل مطلوب';
+                            errorMessage.style.color = '#f44336';
+                            errorMessage.style.fontSize = '0.8rem';
+                            errorMessage.style.marginTop = '5px';
+                            field.parentNode.appendChild(errorMessage);
+                        }
+                    } else {
+                        field.style.borderColor = '#ddd';
+                        
+                        // إزالة رسالة الخطأ
+                        const errorDiv = field.parentNode.querySelector('.error-message');
+                        if (errorDiv) {
+                            errorDiv.remove();
+                        }
+                    }
+                });
+                
+                return isValid;
+            }
+            
+            // تأثيرات تفاعلية
+            const infoCards = document.querySelectorAll('.info-card');
+            infoCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

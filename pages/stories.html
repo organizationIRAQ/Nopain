@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قصص النجاح - بدون ألم</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .stories-hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.8));
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .stories-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: var(--light-color);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .story-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .story-content {
+            padding: 1.5rem;
+        }
+        
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-category {
+            background: var(--light-color);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .featured-story {
+            grid-column: span 2;
+            display: flex;
+        }
+        
+        .featured-story .story-image {
+            width: 50%;
+            height: auto;
+        }
+        
+        .featured-story .story-content {
+            width: 50%;
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .story-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .stats-section {
+            background: var(--light-color);
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .share-story-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .featured-story {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            
+            .featured-story .story-image,
+            .featured-story .story-content {
+                width: 100%;
+            }
+            
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>بدون ألم</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن المنظمة</a></li>
+                <li><a href="campaigns.html">حملاتنا</a></li>
+                <li><a href="volunteer.html">كن متطوعاً</a></li>
+                <li><a href="stories.html" class="active">قصص النجاح</a></li>
+                <li><a href="donate.html">ادعمنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="donate.html" class="btn-donate">تبرع الآن</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="stories-hero">
+        <div class="container">
+            <h1>قصص تُلهم الأمل</h1>
+            <p class="subtitle">لحظات النجاح التي تجعل كل جهد يستحق</p>
+        </div>
+    </section>
+
+    <!-- مرشحات القصص -->
+    <section class="campaigns" style="padding: 60px 0 30px;">
+        <div class="container">
+            <div class="stories-filter">
+                <button class="filter-btn active" data-filter="all">جميع القصص</button>
+                <button class="filter-btn" data-filter="rescue">عمليات الإنقاذ</button>
+                <button class="filter-btn" data-filter="adoption">التبني الناجح</button>
+                <button class="filter-btn" data-filter="legal">الانتصارات القانونية</button>
+                <button class="filter-btn" data-filter="campaign">نجاح الحملات</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- إحصاءات النجاح -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">إنجازاتنا بالأرقام</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="number" style="font-size: 3rem; color: var(--primary-color); display: block;">10,356</span>
+                    <span class="label">حيوان تم انقاذه</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" style="font-size: 3rem; color: var(--primary-color); display: block;">2,847</span>
+                    <span class="label">تبني ناجح</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" style="font-size: 3rem; color: var(--primary-color); display: block;">156</span>
+                    <span class="label">قضية قانونية ربحناها</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" style="font-size: 3rem; color: var(--primary-color); display: block;">47</span>
+                    <span class="label">شركة تحولت لمنتجات خالية من القسوة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شبكة القصص -->
+    <section class="campaigns">
+        <div class="container">
+            <h2 class="section-title">قصص ملهمة</h2>
+            <div class="stories-grid">
+                <!-- قصة مميزة -->
+                <div class="story-card featured-story" data-category="rescue">
+                    <img src="../assets/images/featured-story.jpg" alt="إنقاذ الأسد" class="story-image">
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>ديسمبر 2022</span>
+                            <span class="story-category">إنقاذ</span>
+                        </div>
+                        <h3>الأسد "سيمبا" يجد الحرية بعد 10 سنوات في قفص</h3>
+                        <p>قصة إنقاذ أسد من سيرك متنقل كان يعاني من الإهمال وسوء التغذية. بعد حملة رقمية شارك فيها آلاف الأشخاص، تم نقله إلى محمية طبيعية حيث يعيش الآن بحرية.</p>
+                        <a href="#" class="read-more" data-story="1">اقرأ القصة الكاملة →</a>
+                    </div>
+                </div>
+                
+                <!-- قصص أخرى -->
+                <div class="story-card" data-category="adoption">
+                    <img src="../assets/images/story1.jpg" alt="الكلب لولو" class="story-image">
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>أكتوبر 2023</span>
+                            <span class="story-category">تبني</span>
+                        </div>
+                        <h3>من الشارع إلى المنزل: رحلة الكلب "لولو"</h3>
+                        <p>كلب ضال وجدناه مصاباً في الشارع، وبعد علاجه وتدريبه، وجد منزله الدافئ مع أسرة محبة عبر منصة التبني الرقمي.</p>
+                        <a href="#" class="read-more" data-story="2">اقرأ القصة الكاملة →</a>
+                    </div>
+                </div>
+                
+                <div class="story-card" data-category="legal">
+                    <img src="../assets/images/story2.jpg" alt="مزرعة الدجاج" class="story-image">
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>يوليو 2023</span>
+                            <span class="story-category">انتصار قانوني</span>
+                        </div>
+                        <h3>إغلاق مزرعة دواجن بسبب المعاملة القاسية</h3>
+                        <p>بعد تقرير من متطوعينا الرقميين، تم إغلاق مزرعة كانت تنتهك حقوق الحيوان، وإنقاذ 5000 دجاجة.</p>
+                        <a href="#" class="read-more" data-story="3">اقرأ القصة الكاملة →</a>
+                    </div>
+                </div>
+                
+                <div class="story-card" data-category="campaign">
+                    <img src="../assets/images/story3.jpg" alt="حملة المقاطعة" class="story-image">
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>مايو 2023</span>
+                            <span class="story-category">حملة</span>
+                        </div>
+                        <h3>شركة كبرى تتوقف عن الاختبار على الحيوانات</h3>
+                        <p>بعد حملة #مقاطعة_القسوة التي جمعت 100,000 توقيع، أعلنت شركة مستحضرات تجميل عالمية التحول إلى بدائل غير حيوانية.</p>
+                        <a href="#" class="read-more" data-story="4">اقرأ القصة الكاملة →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شارك قصتك -->
+    <section class="mission" style="padding: 80px 0; background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">شارك قصتك معنا</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">هل لديك قصة نجاح مع حيوان؟ شاركها معنا لنلهم الآخرين</p>
+            
+            <div class="share-story-form">
+                <form id="shareStoryForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="عنوان قصتك" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="اكتب قصتك هنا..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>نوع القصة</label>
+                        <div class="checkbox-group" style="margin-top: 0.5rem;">
+                            <label class="checkbox-item">
+                                <input type="radio" name="storyType" value="rescue" checked>
+                                <span>إنقاذ</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="storyType" value="adoption">
+                                <span>تبني</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="storyType" value="other">
+                                <span>أخرى</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>رفع صورة (اختياري)</label>
+                        <input type="file" class="form-control" accept="image/*">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" style="background: var(--secondary-color);">
+                        <i class="fas fa-share"></i> شارك قصتك
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <section class="call-to-action">
+        <div class="container">
+            <h2>كن جزءاً من قصة النجاح القادمة</h2>
+            <p>ساعدنا في كتابة المزيد من القصص السعيدة</p>
+            <div class="cta-buttons">
+                <a href="volunteer.html" class="btn-primary">كن متطوعاً</a>
+                <a href="donate.html" class="btn-secondary">ادعم بالتبرع</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة عرض القصة -->
+    <div class="story-modal" id="storyModal">
+        <div class="close-modal" onclick="closeStoryModal()">×</div>
+        <div class="modal-content" id="modalContent">
+            <!-- محتوى القصة سيتم إضافته بواسطة JavaScript -->
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> بدون ألم</h3>
+                    <p>منظمة رقمية عالمية لحماية حقوق الحيوان ومنع معاناته</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">عن المنظمة</a></li>
+                        <li><a href="campaigns.html">حملاتنا</a></li>
+                        <li><a href="volunteer.html">التطوع</a></li>
+                        <li><a href="donate.html">التبرع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@bedon-alam.org</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> منظمة رقمية - متواجدون في كل العالم</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 منظمة "بدون ألم" لحماية حقوق الحيوان. جميع الحقوق محفوظة.</p>
+                <p>التسجيل التجريبي: TRN-2023-ANIMAL-001</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // البيانات القصص
+        const storiesData = {
+            1: {
+                title: "الأسد 'سيمبا' يجد الحرية بعد 10 سنوات في قفص",
+                date: "ديسمبر 2022",
+                category: "إنقاذ",
+                fullContent: `
+                    <h2>الأسد "سيمبا" يجد الحرية بعد 10 سنوات في قفص</h2>
+                    <p style="color: #666; margin-bottom: 2rem;">ديسمبر 2022 | قصة إنقاذ</p>
+                    
+                    <img src="../assets/images/featured-story.jpg" alt="الأسد سيمبا" style="width: 100%; border-radius: 10px; margin-bottom: 2rem;">
+                    
+                    <p>في يوم من الأيام، كان "سيمبا" مجرد أسد صغير يتمرّن على حيل السيرك، يعيش في قفص حديدي لا يتجاوز طوله 3 أمتار. لمدة عشر سنوات كاملة، عاش هذا الأسد الجميل حياة مليئة بالمعاناة، بعيداً عن الحياة الطبيعية التي يستحقها.</p>
+                    
+                    <h3>كيف بدأت القصة؟</h3>
+                    <p>تلقينا بلاغاً من أحد متابعينا عبر منصتنا الرقمية، يشرح فيه الظروف السيئة التي يعيش فيها أسد في سيرك متنقل. كانت الصور والمقاطع المرئية صادمة: قفص صغير، طعام غير كاف، وعلامات الإهماب واضحة على جسد الأسد.</p>
+                    
+                    <h3>الحملة الرقمية</h3>
+                    <p>بدأنا حملة رقمية تحت هاشتاج #أنقذوا_سيمبا، حيث:</p>
+                    <ul>
+                        <li>شارك أكثر من 50,000 شخص الحملة</li>
+                        <li>جمعنا 75,000 توقيع على عريضة إلكترونية</li>
+                        <li>تواصلنا مع منظمات حماية الحيوان المحلية</li>
+                        <li>قدمنا بلاغاً رسمياً للسلطات</li>
+                    </ul>
+                    
+                    <h3>النتيجة المذهلة</h3>
+                    <p>بعد 3 أشهر من الحملة المستمرة، وبفضل الضغط الرقمي والتعاون مع السلطات المحلية، تم:</p>
+                    <ul>
+                        <li>مصادرة الأسد "سيمبا" من مالك السيرك</li>
+                        <li>نقله إلى محمية طبيعية تبلغ مساحتها 5 هكتارات</li>
+                        <li>توفير الرعاية البيطرية المناسبة له</li>
+                        <li>دمجه مع أسود أخرى في المحمية</li>
+                    </ul>
+                    
+                    <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-color); margin-top: 2rem;">
+                    اليوم، يعيش سيمبا بحرية في المحمية، يتنقل بين الأشجار، ويستمتع بأشعة الشمس التي حُرم منها طوال عشر سنوات.</p>
+                `
+            },
+            2: {
+                title: "من الشارع إلى المنزل: رحلة الكلب 'لولو'",
+                date: "أكتوبر 2023",
+                category: "تبني",
+                fullContent: "... محتوى القصة الكامل ..."
+            },
+            // يمكن إضافة المزيد من القصص
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // تصفية القصص
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const storyCards = document.querySelectorAll('.story-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // تحديث الأزرار النشطة
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // تصفية القصص
+                    storyCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // فتح نافذة القصة
+            const readMoreLinks = document.querySelectorAll('.read-more');
+            const storyModal = document.getElementById('storyModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            readMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const storyId = this.getAttribute('data-story');
+                    const story = storiesData[storyId];
+                    
+                    if (story) {
+                        modalContent.innerHTML = story.fullContent;
+                        storyModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // نموذج مشاركة القصة
+            const shareStoryForm = document.getElementById('shareStoryForm');
+            if (shareStoryForm) {
+                shareStoryForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('شكراً لمشاركتك قصتك! سنراجعها وننشرها على الموقع بعد الموافقة.');
+                    this.reset();
+                });
+            }
+        });
+        
+        function closeStoryModal() {
+            document.getElementById('storyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // إغلاق النافذة عند النقر خارجها
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('storyModal');
+            if (e.target === modal) {
+                closeStoryModal();
+            }
+        });
+    </script>
+</body>
+</html>
